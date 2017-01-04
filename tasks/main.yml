@@ -2,7 +2,7 @@
 - name: Install Disable THP Service
   become: yes
   template:
-      src: "templates/{{ ansible_distribution }}-disable-transparent-huge-pages.service.j2"
+      src: "templates/disable-transparent-huge-pages.service.j2"
       dest: "/etc/systemd/system/disable-transparent-huge-pages.service"
       mode: 0555
   when: thp_disable
