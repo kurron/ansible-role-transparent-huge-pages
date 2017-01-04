@@ -23,3 +23,24 @@
 - name: Test Changes
   command: "cat /sys/kernel/mm/transparent_hugepage/defrag"
   when: thp_disable
+
+- name: Create Tuned Directory
+  become: yes
+  file:
+      path: "/etc/tuned/no-thp"
+      state: directory
+      mode: 0755
+  when: thp_disable and (ansible_distribution == "RedHat")
+
+- name: Install Disable THP Tuned Configuration
+  become: yes
+  template:
+      src: "templates/tuned.conf.j2"
+      dest: "/etc/tuned/no-thp/tuned.conf"
+      mode: 0555
+  when: thp_disable and (ansible_distribution == "RedHat")
+
+- name: Tickle Tuned
+  become: yes
+  command: "tuned-adm profile no-thp"
+  when: thp_disable and (ansible_distribution == "RedHat")
