@@ -1,7 +1,7 @@
 Role Name
 =========
 
-Disabling of Transparent Huge Pages (THP), initially targetted to RHEL.  Database
+Disabling of Transparent Huge Pages (THP).  Database
 workloads do not do well with THP enabled.
 
 Requirements
@@ -12,7 +12,7 @@ TODO
 Role Variables
 --------------
 
-None.
+* thp_disable: true
 
 Dependencies
 ------------
