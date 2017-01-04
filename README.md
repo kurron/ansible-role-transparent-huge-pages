@@ -1,7 +1,8 @@
 Role Name
 =========
 
-MySQL server, initially targetted to RHEL.
+Disabling of Transparent Huge Pages (THP), initially targetted to RHEL.  Database
+workloads do not do well with THP enabled.
 
 Requirements
 ------------
@@ -24,7 +25,7 @@ Example Playbook
 ```
 - hosts: servers
   roles:
-      - { role: kurron.mysql }
+      - { role: kurron.transparent-huge-pages }
 ```
 
 License

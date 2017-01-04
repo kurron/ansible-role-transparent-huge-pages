@@ -1,3 +1,2 @@
 ---
-mysql_install: true
-mysql_version: 0.0.0
+thp_disable: true
